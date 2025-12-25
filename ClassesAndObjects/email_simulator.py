@@ -14,7 +14,13 @@ class Email:
         print('\n--- Email ---')
         print(f'From: {self.sender.name}')
         print(f'To: {self.receiver.name}')
+        print(f'Subject: {self.subject}')
+        print(f'Body: {self.body}')
+        print('------------\n')
 
+    def __str__(self):
+        status = 'Read' if self.read else 'Unread'
+        return f"[{status}] From: {self.sender.name} | Subject: {self.subject}"
 
 class User:
     def __init__(self, name):
@@ -28,6 +34,8 @@ class User:
 class Inbox:
     def __init__(self):
         self.emails = []
-    
+
     def receive_email(self, email):
         self.emails.append(email)
+
+    
